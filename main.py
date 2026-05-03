@@ -27,7 +27,7 @@ if now.month == birthday_data["month"] and now.day == birthday_data["day"]:
     with smtplib.SMTP("smtp.gmail.com") as connection:
         connection.starttls()
         connection.login(user=MY_EMAIL, password=MY_PASSWORD)
-        connection.sendmail(from_addr=my_email,
+        connection.sendmail(from_addr=MY_EMAIL,
                             to_addrs=to_email,
                             msg=f"Subject:HAPPY BIRTHDAY\n\n{change_name}")
         connection.close()
