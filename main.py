@@ -2,6 +2,7 @@ import pandas as pd
 import datetime as dt
 import random
 import smtplib
+import os
 
 df = pd.read_csv("birthdays.csv")
 birthday_data = df.iloc[0].to_dict()   #to get the data in perfect dict format and no list involved
@@ -19,8 +20,8 @@ if now.month == birthday_data["month"] and now.day == birthday_data["day"]:
         inletter=file.read()
     change_name=inletter.replace("[NAME]",birthday_data["name"])
 
-    my_email = "testmailpython1290@gmail.com"
-    password = "vwhkggwpmkkfkywb"
+    MY_EMAIL = os.environ.get("MY_EMAIL")
+    MY_PASSWORD = os.environ.get("MY_PASSWORD")
     to_email = birthday_data["email"]
 
     with smtplib.SMTP("smtp.gmail.com") as connection:
